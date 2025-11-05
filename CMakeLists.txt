@@ -17,5 +17,5 @@ include_directories(
 
 add_library(AIfES STATIC ${AIFES_SRC})
 
-add_executable(AifesIoTLab main_train_RGB.c rgb_dataset.h)
-target_link_libraries(AifesIoTLab PRIVATE AIfES)
+add_executable(AifesIoTLab main.c)
+target_link_libraries(AifesIoTLab PRIVATE AIfES m)
