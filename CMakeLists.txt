@@ -17,5 +17,5 @@ include_directories(
 
 add_library(AIfES STATIC ${AIFES_SRC})
 
-add_executable(AifesIoTLab main.c)
+add_executable(AifesIoTLab main_train_iris.c)
 target_link_libraries(AifesIoTLab PRIVATE AIfES m)

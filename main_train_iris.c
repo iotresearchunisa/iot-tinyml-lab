@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
     ailayer_input_f32_t input_layer = AILAYER_INPUT_F32_A(4, input_layer_shape);
 
     ailayer_dense_f32_t dense_layer_1 = AILAYER_DENSE_F32_A(64);
-    ailayer_relu_f32_t relu_layer_1 = AILAYER_SIGMOID_F32_A();
+    ailayer_relu_f32_t relu_layer_1 = AILAYER_RELU_F32_A();
 
     ailayer_dense_f32_t dense_layer_2 = AILAYER_DENSE_F32_A(32);
     ailayer_relu_f32_t relu_layer_2 = AILAYER_RELU_F32_A();
