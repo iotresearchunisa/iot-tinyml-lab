@@ -32,10 +32,10 @@ int main(int argc, char *argv[]) {
     uint16_t input_layer_shape[] = {1, 4};
     ailayer_input_f32_t input_layer = AILAYER_INPUT_F32_A(4, input_layer_shape);
 
-    ailayer_dense_f32_t dense_layer_1 = AILAYER_DENSE_F32_A(64);
+    ailayer_dense_f32_t dense_layer_1 = AILAYER_DENSE_F32_A(32);
     ailayer_relu_f32_t relu_layer_1 = AILAYER_RELU_F32_A();
 
-    ailayer_dense_f32_t dense_layer_2 = AILAYER_DENSE_F32_A(32);
+    ailayer_dense_f32_t dense_layer_2 = AILAYER_DENSE_F32_A(16);
     ailayer_relu_f32_t relu_layer_2 = AILAYER_RELU_F32_A();
 
     ailayer_dense_f32_t dense_layer_3 = AILAYER_DENSE_F32_A(3);
@@ -114,10 +114,12 @@ int main(int argc, char *argv[]) {
     }
 
     // Neural Network Export
-    // print_tensor_like_array("weights_data_dense_1", &(dense_layer_1.weights));
-    // print_tensor_like_array("bias_data_dense_1", &(dense_layer_1.bias));
-    // print_tensor_like_array("weights_data_dense_2", &(dense_layer_2.weights));
-    // print_tensor_like_array("bias_data_dense_2", &(dense_layer_2.bias));
+    print_tensor_like_array("weights_data_dense_1", &(dense_layer_1.weights));
+    print_tensor_like_array("bias_data_dense_1", &(dense_layer_1.bias));
+    print_tensor_like_array("weights_data_dense_2", &(dense_layer_2.weights));
+    print_tensor_like_array("bias_data_dense_2", &(dense_layer_2.bias));
+    print_tensor_like_array("weights_data_dense_3", &(dense_layer_3.weights));
+    print_tensor_like_array("bias_data_dense_3", &(dense_layer_3.bias));
 
     //Memory free
     free(parameter_memory);
