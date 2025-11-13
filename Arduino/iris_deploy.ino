@@ -15,20 +15,19 @@ void setup() {
 
 void loop() {
     // Dataset Preparation
-    uint16_t training_input_shape[] = {1, 4};
-    uint16_t training_target_shape[] = {1, 3};
+    uint16_t input_shape[] = {1, 4};
+    uint16_t output_shape[] = {1, 3};
 
     float input_data[1 * 4] = {1.0f, 1.0f, 1.0f, 1.0f};
     float output_data[1 * 3];
 
-    aitensor_t training_input_tensor = AITENSOR_2D_F32(training_input_shape, input_data);
-    aitensor_t training_target_tensor = AITENSOR_2D_F32(training_target_shape, output_data);
+    aitensor_t input_tensor = AITENSOR_2D_F32(input_shape, input_data);
+    aitensor_t output_tensor = AITENSOR_2D_F32(output_shape, output_data);
 
     // Neural Network Design
     aimodel_t model;
 
-    uint16_t input_layer_shape[] = {1, 4};
-    ailayer_input_f32_t input_layer = AILAYER_INPUT_F32_M(4, input_layer_shape);
+    ailayer_input_f32_t input_layer = AILAYER_INPUT_F32_M(4, input_shape);
 
     ailayer_dense_f32_t dense_layer_1 = AILAYER_DENSE_F32_M(32, weights_data_dense_1, bias_data_dense_1);
     ailayer_relu_f32_t relu_layer_1 = AILAYER_RELU_F32_M();
@@ -61,7 +60,7 @@ void loop() {
 
     aialgo_schedule_inference_memory(&model, memory_ptr, memory_size);
 
-    aialgo_inference_model(&model, &training_input_tensor, &training_target_tensor);
+    aialgo_inference_model(&model, &input_tensor, &output_tensor);
 
     Serial.println(output_data[0]);
     Serial.println(output_data[1]);
