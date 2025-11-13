@@ -59,7 +59,7 @@ void loop() {
     }
 
     aialgo_schedule_inference_memory(&model, memory_ptr, memory_size);
-
+    
     aialgo_inference_model(&model, &input_tensor, &output_tensor);
 
     Serial.println(output_data[0]);
